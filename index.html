@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYX Studio | Premium Creative & Growth Agency</title>
+    <title>AYX Studio | Premium Creative Agency</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- CSS VARIABLES & RESET --- */
         :root {
-            --bg-dark: #050505;
-            --bg-card: #121212;
-            --primary: #00f2ea;  /* Neon Cyan */
-            --secondary: #ff0050; /* Neon Red/Pink */
-            --accent: #7000ff;    /* Purple */
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
+            --bg-black: #08080c;
+            --purple-glow: #bc13fe;
+            --purple-deep: #7000ff;
+            --cyan-accent: #00f2ea;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(188, 19, 254, 0.2);
+            --text: #ffffff;
         }
 
         * {
@@ -31,17 +28,28 @@
 
         body {
             font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            background-color: var(--bg-black);
+            color: var(--text);
             overflow-x: hidden;
         }
 
-        /* --- ANIMATED BACKGROUND --- */
-        .bg-glow {
+        /* --- ADVANCED BACKGROUND --- */
+        .bg-gradient {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.15) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(0, 242, 234, 0.1) 0%, transparent 40%);
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(112, 0, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(188, 19, 254, 0.1) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+            opacity: 0.15;
             z-index: -1;
         }
 
@@ -50,9 +58,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(15px);
+            padding: 20px 8%;
+            background: rgba(8, 8, 12, 0.8);
+            backdrop-filter: blur(20px);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -60,366 +68,318 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-family: 'Syncopate', sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 1.4rem;
         }
 
         .logo img {
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid var(--primary);
+            height: 45px;
+            filter: drop-shadow(0 0 8px var(--purple-glow));
         }
 
         .nav-links a {
-            color: var(--text-main);
+            color: var(--text);
             text-decoration: none;
-            margin-left: 30px;
+            margin-left: 35px;
             font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: 0.3s;
-            position: relative;
+            opacity: 0.8;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--purple-glow);
+            opacity: 1;
+            text-shadow: 0 0 10px var(--purple-glow);
         }
 
         .discord-btn {
-            background: #5865F2;
+            background: linear-gradient(45deg, var(--purple-deep), #5865F2);
             color: white;
-            padding: 10px 25px;
-            border-radius: 50px;
+            padding: 12px 28px;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 8px;
-            transition: 0.3s;
-            box-shadow: 0 0 15px rgba(88, 101, 242, 0.5);
+            gap: 10px;
+            transition: 0.4s;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 15px rgba(112, 0, 255, 0.3);
         }
 
         .discord-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(88, 101, 242, 0.8);
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--purple-glow);
         }
 
         /* --- HERO SECTION --- */
         .hero {
-            min-height: 90vh;
+            height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
-            background: linear-gradient(to bottom, rgba(5,5,5,0.3), var(--bg-dark)),
-                        url('https://media.discordapp.net/attachments/1430899983971778624/1453338150695997480/war.jpg') no-repeat center/cover;
             position: relative;
+            background: url('https://media.discordapp.net/attachments/1430899983971778624/1453338150695997480/war.jpg') no-repeat center/cover;
+            background-blend-mode: overlay;
+            background-color: rgba(0,0,0,0.7);
         }
 
         .hero h1 {
-            font-size: 5rem;
-            line-height: 1.1;
+            font-family: 'Syncopate', sans-serif;
+            font-size: 4.5rem;
+            line-height: 1;
             margin-bottom: 20px;
             text-transform: uppercase;
         }
 
         .hero h1 span {
-            color: var(--primary);
-            text-shadow: 0 0 20px rgba(0, 242, 234, 0.6);
+            background: linear-gradient(to right, #fff, var(--purple-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
+            font-size: 1.1rem;
+            color: #ccc;
+            max-width: 700px;
+            letter-spacing: 1px;
             margin-bottom: 40px;
         }
 
-        .hero-btns {
-            display: flex;
-            gap: 20px;
-        }
-
-        .btn-primary {
-            padding: 15px 40px;
-            background: var(--primary);
-            color: #000;
+        .btn-main {
+            padding: 18px 45px;
+            background: transparent;
+            color: white;
+            border: 2px solid var(--purple-glow);
             font-weight: 800;
             text-decoration: none;
-            border-radius: 5px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
             transition: 0.3s;
         }
 
-        .btn-primary:hover {
-            background: #fff;
-            box-shadow: 0 0 30px var(--primary);
+        .btn-main:hover {
+            background: var(--purple-glow);
+            box-shadow: 0 0 40px var(--purple-glow);
+            color: #000;
         }
 
-        /* --- SECTION STYLES --- */
-        .section-title {
+        /* --- SERVICES SECTION --- */
+        .section-header {
             text-align: center;
-            margin: 80px 0 50px;
+            margin: 100px 0 60px;
         }
 
-        .section-title h2 {
-            font-size: 3rem;
-            text-transform: uppercase;
+        .section-header h2 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 2.5rem;
+            color: white;
         }
 
-        .section-title span {
-            color: var(--secondary);
-        }
+        .section-header span { color: var(--purple-glow); }
 
-        /* --- SERVICES GRID --- */
-        .services {
-            padding: 20px 5%;
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 0 8%;
         }
 
-        .card {
-            background: var(--bg-card);
+        .service-card {
+            background: var(--glass);
             border: 1px solid var(--border);
-            padding: 40px;
-            border-radius: 20px;
+            padding: 50px 30px;
+            text-align: center;
+            border-radius: 0;
             transition: 0.4s;
-            position: relative;
-            overflow: hidden;
         }
 
-        .card:hover {
+        .service-card:hover {
+            background: rgba(188, 19, 254, 0.05);
+            border-color: var(--purple-glow);
             transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
 
-        .card i {
+        .service-card i {
             font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
+            color: var(--purple-glow);
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px var(--purple-glow);
         }
 
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: var(--text-muted);
-        }
-
-        /* --- PRICING TABLES --- */
-        .pricing-container {
-            padding: 20px 5%;
+        /* --- PRICING/MARKET --- */
+        .market-flex {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
             gap: 30px;
+            justify-content: center;
+            padding: 0 8%;
         }
 
-        .pricing-card {
-            flex: 1;
-            min-width: 300px;
-            max-width: 450px;
-            background: linear-gradient(145deg, #1a1a1a, #111);
+        .price-box {
+            background: #0d0d12;
             border: 1px solid var(--border);
-            border-radius: 20px;
             padding: 40px;
+            flex: 1;
+            min-width: 320px;
+            max-width: 500px;
             position: relative;
         }
 
-        .pricing-card.popular {
-            border: 1px solid var(--accent);
-            box-shadow: 0 0 20px rgba(112, 0, 255, 0.2);
+        .price-box.featured {
+            border: 1px solid var(--purple-glow);
+            box-shadow: inset 0 0 20px rgba(188, 19, 254, 0.1);
         }
 
-        .pricing-card h3 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .price-list {
-            list-style: none;
-            margin-top: 30px;
-        }
-
-        .price-list li {
+        .price-item {
             display: flex;
             justify-content: space-between;
             padding: 15px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-size: 1.1rem;
         }
 
-        .price-list li span:last-child {
-            color: var(--primary);
-            font-weight: 700;
+        .price-item span:last-child {
+            color: var(--cyan-accent);
+            font-weight: bold;
         }
 
-        .youtube-color { color: #ff0000; }
-        .insta-color { color: #e1306c; }
-
-        /* --- PORTFOLIO GALLERY --- */
-        .gallery-grid {
-            padding: 20px 5%;
-            columns: 3 300px;
+        /* --- GALLERY --- */
+        .portfolio {
+            column-count: 3;
             column-gap: 20px;
+            padding: 0 8%;
         }
 
-        .gallery-item {
-            break-inside: avoid;
-            margin-bottom: 20px;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .gallery-item img {
+        .work-img {
             width: 100%;
-            display: block;
+            margin-bottom: 20px;
+            filter: grayscale(0.5);
             transition: 0.5s;
+            border: 1px solid var(--border);
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
-            opacity: 0.8;
+        .work-img:hover {
+            filter: grayscale(0);
+            transform: scale(1.02);
+            border-color: var(--purple-glow);
         }
 
-        /* --- FOOTER --- */
         footer {
-            background: #000;
-            padding: 60px 20px;
-            text-align: center;
             margin-top: 100px;
+            padding: 80px 8% 40px;
             border-top: 1px solid var(--border);
+            text-align: center;
+            background: #050508;
         }
 
-        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            nav { flex-direction: column; gap: 15px; }
-            .nav-links { display: none; } /* Simplified for mobile */
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .portfolio { column-count: 1; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow"></div>
+    <div class="bg-gradient"></div>
+    <div class="grid-overlay"></div>
 
     <nav>
         <div class="logo">
-            <img src="https://media.discordapp.net/attachments/1430900209491382423/1430903766470758421/VRX_LOGO.jpg" alt="AYX Logo">
+            <img src="ayx_-removebg-preview.png" alt="AYX Logo">
             AYX STUDIO
         </div>
         <div class="nav-links">
-            <a href="#services">Services</a>
-            <a href="#market">SMM Market</a>
-            <a href="#portfolio">Work</a>
+            <a href="#expertise">Services</a>
+            <a href="#growth">SMM Market</a>
+            <a href="#work">Portfolio</a>
         </div>
         <a href="https://discord.gg/CKcbtqyEDs" class="discord-btn">
-            <i class="fab fa-discord"></i> Join Discord
+            <i class="fab fa-discord"></i> JOIN SERVER
         </a>
     </nav>
 
     <header class="hero">
-        <h1>Creativity <br> <span>Beyond Limits</span></h1>
-        <p>Your one-stop destination for 3D Art, VFX, Video Editing, and Social Media Growth.</p>
-        <div class="hero-btns">
-            <a href="https://discord.gg/CKcbtqyEDs" class="btn-primary">Order Now</a>
-        </div>
+        <h1>CREATIVITY <br> <span>BEYOND LIMITS</span></h1>
+        <p>Industrial grade 3D Art, VFX, and Premium Social Media Growth Strategies tailored for the elite.</p>
+        <a href="https://discord.gg/CKcbtqyEDs" class="btn-main">Get Started</a>
     </header>
 
-    <div class="section-title" id="services">
-        <h2>Our <span>Expertise</span></h2>
+    <div class="section-header" id="expertise">
+        <h2>OUR <span>EXPERTISE</span></h2>
     </div>
 
-    <section class="services">
-        <div class="card">
+    <section class="services-grid">
+        <div class="service-card">
             <i class="fas fa-cube"></i>
             <h3>3D & VFX</h3>
-            <p>Industrial grade 3D modeling and visual effects that make your content pop.</p>
+            <p>High-end CGI and visual storytelling for brands.</p>
         </div>
-        <div class="card">
-            <i class="fas fa-video"></i>
-            <h3>Video Editing</h3>
-            <p>Cinematic editing for YouTube & Reels. (Showreel Coming Soon)</p>
+        <div class="service-card">
+            <i class="fas fa-play"></i>
+            <h3>VIDEO EDITING</h3>
+            <p>Retaining viewers with high-pace cinematic edits.</p>
         </div>
-        <div class="card">
-            <i class="fas fa-image"></i>
-            <h3>Graphic Design</h3>
-            <p>Thumbnails, Logos, GFX and Post-Production tailored for high CTR.</p>
-        </div>
-        <div class="card">
-            <i class="fas fa-pen-fancy"></i>
-            <h3>Content Writing</h3>
-            <p>Engaging scripts and captions that hook your audience instantly.</p>
+        <div class="service-card">
+            <i class="fas fa-layer-group"></i>
+            <h3>DESIGN</h3>
+            <p>High-CTR Thumbnails and Brand Identities.</p>
         </div>
     </section>
 
-    <div class="section-title" id="market">
-        <h2>Growth <span>Market</span></h2>
-        <p style="margin-top: 10px; color: #888;">Cheapest Rates | High Quality | Instant Start</p>
+    <div class="section-header" id="growth">
+        <h2>GROWTH <span>MARKET</span></h2>
     </div>
 
-    <div class="pricing-container">
-        <div class="pricing-card popular">
-            <h3><i class="fab fa-instagram insta-color"></i> Instagram</h3>
-            <ul class="price-list">
-                <li><span>Views (1K)</span> <span>₹10</span></li>
-                <li><span>Shares (1K)</span> <span>₹5</span></li>
-                <li><span>Likes (1K)</span> <span>₹25</span></li>
-                <li><span>Fake Followers (1K)</span> <span>₹200</span></li>
-                <li><span>Real Followers (1K)</span> <span>₹700</span></li>
-                <li><span>Comments (1K)</span> <span>₹500</span></li>
-            </ul>
-            <a href="https://discord.gg/CKcbtqyEDs" class="btn-primary" style="display:block; text-align:center; margin-top:20px;">Buy on Discord</a>
+    <div class="market-flex">
+        <div class="price-box featured">
+            <h3>INSTAGRAM GROWTH</h3><br>
+            <div class="price-item"><span>1K Views</span> <span>₹10</span></div>
+            <div class="price-item"><span>1K Likes</span> <span>₹25</span></div>
+            <div class="price-item"><span>1K Real Followers</span> <span>₹700</span></div>
+            <div class="price-item"><span>1K Comments</span> <span>₹500</span></div>
         </div>
-
-        <div class="pricing-card">
-            <h3><i class="fab fa-youtube youtube-color"></i> YouTube</h3>
-            <ul class="price-list">
-                <li><span>Views (1K)</span> <span>₹200</span></li>
-                <li><span>Subscribers (1K)</span> <span>₹2200</span></li>
-                <li><span>Comments (1.1K)</span> <span>₹1000</span></li>
-            </ul>
-            <a href="https://discord.gg/CKcbtqyEDs" class="btn-primary" style="display:block; text-align:center; margin-top:20px;">Buy on Discord</a>
+        <div class="price-box">
+            <h3>YOUTUBE MARKET</h3><br>
+            <div class="price-item"><span>1K Views</span> <span>₹200</span></div>
+            <div class="price-item"><span>1K Subscribers</span> <span>₹2200</span></div>
+            <div class="price-item"><span>1.1K Comments</span> <span>₹1000</span></div>
         </div>
     </div>
 
-    <div class="section-title" id="portfolio">
-        <h2>Latest <span>Work</span></h2>
+    <div class="section-header" id="work">
+        <h2>LATEST <span>WORK</span></h2>
     </div>
 
-    <div class="gallery-grid">
-        <div class="gallery-item"><img src="https://media.discordapp.net/attachments/1430899983971778624/1457615615660396607/IMG-20260104-WA0003.jpg?ex=697eecd3&is=697d9b53&hm=01d8366addfbbc34bb66e6c08fce31d76412d37a7204cf19083cea120d2fa94b&=&format=webp&width=967&height=552" alt="Work 1"></div>
-        <div class="gallery-item"><img src="https://media.discordapp.net/attachments/1430899983971778624/1430960411284471818/Untitled7.jpg?ex=697eda7c&is=697d88fc&hm=13a15e80d9ebe47353a0017f99f1053b561f3e38098eb7d22e5f3bde9e62161e&=&format=webp&width=976&height=549" alt="Work 2"></div>
-        <div class="gallery-item"><img src="https://media.discordapp.net/attachments/1430899983971778624/1430960393911664671/Picsart_25-10-01_19-42-55-382.jpg?ex=697eda77&is=697d88f7&hm=0506716871988f9797c928fcb9cfcef7e0e68debe7b82e65186dcb144d97fa21&=&format=webp&width=976&height=549" alt="Work 3"></div>
-        <div class="gallery-item"><img src="https://media.discordapp.net/attachments/1430899983971778624/1430960242203693056/Picsart_25-10-08_13-24-53-671.jpg?ex=697eda53&is=697d88d3&hm=a9d52a54f9803cfe29b825de1b80dade275957ebfc1fdb95ec80ab0042edbc22&=&format=webp&width=976&height=549" alt="Work 4"></div>
-        <div class="gallery-item"><img src="https://media.discordapp.net/attachments/1430900209491382423/1430903797697482862/LOLU.png?ex=697f4e82&is=697dfd02&hm=8774e3350571545b4a24e375c5c0fe43c859457d5deddd08f8ccf68f4b52fb36&=&format=webp&quality=lossless&width=552&height=552" alt="Logo Work"></div>
-        <div class="gallery-item"><img src="https://media.discordapp.net/attachments/1430899983971778624/1430960141251121193/IMG_20251020_190801.jpg?ex=697eda3b&is=697d88bb&hm=e7e4ff5ecbebed3a94d6aaa7f0810155608b15bb14b3948a3465831e0e641f06&=&format=webp&width=976&height=548" alt="Work 5"></div>
-    </div>
+    <section class="portfolio">
+        <img src="https://media.discordapp.net/attachments/1430899983971778624/1457615615660396607/IMG-20260104-WA0003.jpg" class="work-img">
+        <img src="https://media.discordapp.net/attachments/1430899983971778624/1430960411284471818/Untitled7.jpg" class="work-img">
+        <img src="https://media.discordapp.net/attachments/1430899983971778624/1430960393911664671/Picsart_25-10-01_19-42-55-382.jpg" class="work-img">
+        <img src="https://media.discordapp.net/attachments/1430899983971778624/1430960242203693056/Picsart_25-10-08_13-24-53-671.jpg" class="work-img">
+        <img src="https://media.discordapp.net/attachments/1430900209491382423/1430903797697482862/LOLU.png" class="work-img">
+        <img src="https://media.discordapp.net/attachments/1430899983971778624/1430960141251121193/IMG_20251020_190801.jpg" class="work-img">
+    </section>
 
     <footer>
         <div class="logo" style="justify-content: center; margin-bottom: 20px;">
-            <img src="https://media.discordapp.net/attachments/1430900209491382423/1430903766470758421/VRX_LOGO.jpg" alt="AYX Logo">
+            <img src="ayx_-removebg-preview.png" alt="AYX Logo">
             AYX STUDIO
         </div>
-        <p style="color: #666; margin-bottom: 30px;">Elevating content to the next dimension.</p>
-        <a href="https://discord.gg/CKcbtqyEDs" class="discord-btn" style="display: inline-flex;">
-            Join Server to Buy
-        </a>
-        <p style="margin-top: 50px; font-size: 0.8rem; color: #444;">&copy; 2026 AYX Studio. All Rights Reserved.</p>
+        <p style="opacity: 0.5;">Elevating content to the next dimension.</p>
+        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.3;">&copy; 2026 AYX Studio. Built for Performance.</p>
     </footer>
 
 </body>
