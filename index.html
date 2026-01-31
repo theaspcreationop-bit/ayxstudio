@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYX Studio | Premium Creative Agency</title>
+    <title>AYX Studio | Premium Creative & Growth Agency</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* --- DESIGN SYSTEM --- */
         :root {
-            --bg-black: #08080c;
-            --purple-glow: #bc13fe;
-            --purple-deep: #7000ff;
-            --cyan-accent: #00f2ea;
+            --bg-black: #050507;
+            --purple-neon: #bc13fe;
+            --purple-dark: #7000ff;
+            --cyan-neon: #00f2ea;
             --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(188, 19, 254, 0.2);
-            --text: #ffffff;
+            --border: rgba(188, 19, 254, 0.25);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
         }
 
         * {
@@ -29,27 +31,28 @@
         body {
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg-black);
-            color: var(--text);
+            color: var(--text-main);
             overflow-x: hidden;
         }
 
-        /* --- ADVANCED BACKGROUND --- */
-        .bg-gradient {
+        /* --- BACKGROUND ANIMATION --- */
+        .bg-glow {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: 
-                radial-gradient(circle at 10% 10%, rgba(112, 0, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(188, 19, 254, 0.1) 0%, transparent 40%);
+                radial-gradient(circle at 15% 15%, rgba(188, 19, 254, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(0, 242, 234, 0.1) 0%, transparent 40%);
             z-index: -1;
         }
 
         .grid-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 50px 50px;
-            mask-image: radial-gradient(ellipse at center, black, transparent 80%);
-            opacity: 0.15;
+            background-image: linear-gradient(var(--border) 1px, transparent 1px), 
+                              linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse at center, black, transparent 90%);
+            opacity: 0.1;
             z-index: -1;
         }
 
@@ -59,8 +62,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background: rgba(8, 8, 12, 0.8);
-            backdrop-filter: blur(20px);
+            background: rgba(5, 5, 7, 0.85);
+            backdrop-filter: blur(15px);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -73,228 +76,190 @@
             gap: 12px;
             font-family: 'Syncopate', sans-serif;
             font-weight: 700;
-            letter-spacing: 2px;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
         }
 
         .logo img {
             height: 45px;
-            filter: drop-shadow(0 0 8px var(--purple-glow));
+            filter: drop-shadow(0 0 10px var(--purple-neon));
         }
 
         .nav-links a {
-            color: var(--text);
+            color: var(--text-main);
             text-decoration: none;
-            margin-left: 35px;
-            font-weight: 500;
-            font-size: 0.9rem;
+            margin-left: 30px;
+            font-size: 0.85rem;
             text-transform: uppercase;
+            font-weight: 600;
             letter-spacing: 1px;
             transition: 0.3s;
-            opacity: 0.8;
         }
 
         .nav-links a:hover {
-            color: var(--purple-glow);
-            opacity: 1;
-            text-shadow: 0 0 10px var(--purple-glow);
+            color: var(--purple-neon);
+            text-shadow: 0 0 10px var(--purple-neon);
         }
 
         .discord-btn {
-            background: linear-gradient(45deg, var(--purple-deep), #5865F2);
+            background: linear-gradient(45deg, var(--purple-dark), #5865F2);
             color: white;
-            padding: 12px 28px;
+            padding: 10px 24px;
             border-radius: 4px;
             text-decoration: none;
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 10px;
-            transition: 0.4s;
+            gap: 8px;
+            transition: 0.3s;
             border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 4px 15px rgba(112, 0, 255, 0.3);
         }
 
         .discord-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px var(--purple-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px var(--purple-neon);
         }
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 90vh;
+            height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            position: relative;
-            background: url('https://media.discordapp.net/attachments/1430899983971778624/1453338150695997480/war.jpg') no-repeat center/cover;
-            background-blend-mode: overlay;
-            background-color: rgba(0,0,0,0.7);
+            padding: 0 20px;
+            background: radial-gradient(circle at center, transparent, var(--bg-black)),
+                        url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974&auto=format&fit=crop') no-repeat center/cover;
+            background-blend-mode: multiply;
         }
 
         .hero h1 {
             font-family: 'Syncopate', sans-serif;
-            font-size: 4.5rem;
-            line-height: 1;
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            line-height: 1.1;
             margin-bottom: 20px;
-            text-transform: uppercase;
         }
 
         .hero h1 span {
-            background: linear-gradient(to right, #fff, var(--purple-glow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: block;
+            color: var(--purple-neon);
+            text-shadow: 0 0 30px var(--purple-neon);
         }
 
         .hero p {
             font-size: 1.1rem;
-            color: #ccc;
-            max-width: 700px;
-            letter-spacing: 1px;
+            color: var(--text-dim);
+            max-width: 650px;
             margin-bottom: 40px;
         }
 
-        .btn-main {
-            padding: 18px 45px;
+        .btn-glow {
+            padding: 18px 40px;
             background: transparent;
             color: white;
-            border: 2px solid var(--purple-glow);
+            border: 2px solid var(--purple-neon);
             font-weight: 800;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .btn-main:hover {
-            background: var(--purple-glow);
-            box-shadow: 0 0 40px var(--purple-glow);
-            color: #000;
-        }
-
-        /* --- SERVICES SECTION --- */
-        .section-header {
-            text-align: center;
-            margin: 100px 0 60px;
-        }
-
-        .section-header h2 {
-            font-family: 'Syncopate', sans-serif;
-            font-size: 2.5rem;
-            color: white;
-        }
-
-        .section-header span { color: var(--purple-glow); }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 0 8%;
-        }
-
-        .service-card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            padding: 50px 30px;
-            text-align: center;
-            border-radius: 0;
             transition: 0.4s;
         }
 
-        .service-card:hover {
+        .btn-glow:hover {
+            background: var(--purple-neon);
+            color: black;
+            box-shadow: 0 0 50px var(--purple-neon);
+        }
+
+        /* --- SERVICES --- */
+        .section-title {
+            text-align: center;
+            margin: 100px 0 60px;
+            font-family: 'Syncopate', sans-serif;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 0 8%;
+        }
+
+        .s-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 50px 30px;
+            border-radius: 4px;
+            transition: 0.4s;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .s-card:hover {
+            border-color: var(--purple-neon);
             background: rgba(188, 19, 254, 0.05);
-            border-color: var(--purple-glow);
             transform: translateY(-10px);
         }
 
-        .service-card i {
+        .s-card i {
             font-size: 3rem;
-            color: var(--purple-glow);
+            color: var(--purple-neon);
             margin-bottom: 25px;
-            text-shadow: 0 0 15px var(--purple-glow);
+            text-shadow: 0 0 15px var(--purple-neon);
         }
 
-        /* --- PRICING/MARKET --- */
+        /* --- MARKET TABLE --- */
         .market-flex {
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
-            justify-content: center;
             padding: 0 8%;
+            justify-content: center;
         }
 
-        .price-box {
-            background: #0d0d12;
+        .price-card {
+            background: #0d0d0f;
             border: 1px solid var(--border);
             padding: 40px;
             flex: 1;
             min-width: 320px;
             max-width: 500px;
-            position: relative;
         }
 
-        .price-box.featured {
-            border: 1px solid var(--purple-glow);
-            box-shadow: inset 0 0 20px rgba(188, 19, 254, 0.1);
-        }
+        .price-card.premium { border: 1px solid var(--cyan-neon); }
 
-        .price-item {
+        .price-row {
             display: flex;
             justify-content: space-between;
             padding: 15px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .price-item span:last-child {
-            color: var(--cyan-accent);
-            font-weight: bold;
+        .price-row span:last-child {
+            color: var(--cyan-neon);
+            font-weight: 900;
         }
 
-        /* --- GALLERY --- */
-        .portfolio {
-            column-count: 3;
-            column-gap: 20px;
-            padding: 0 8%;
-        }
-
-        .work-img {
-            width: 100%;
-            margin-bottom: 20px;
-            filter: grayscale(0.5);
-            transition: 0.5s;
-            border: 1px solid var(--border);
-        }
-
-        .work-img:hover {
-            filter: grayscale(0);
-            transform: scale(1.02);
-            border-color: var(--purple-glow);
-        }
-
+        /* --- FOOTER --- */
         footer {
             margin-top: 100px;
-            padding: 80px 8% 40px;
+            padding: 80px 5% 40px;
             border-top: 1px solid var(--border);
             text-align: center;
-            background: #050508;
+            background: #020203;
         }
 
+        .footer-logo img { height: 50px; margin-bottom: 20px; }
+
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
             .nav-links { display: none; }
-            .portfolio { column-count: 1; }
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-gradient"></div>
+    <div class="bg-glow"></div>
     <div class="grid-overlay"></div>
 
     <nav>
@@ -303,83 +268,70 @@
             AYX STUDIO
         </div>
         <div class="nav-links">
-            <a href="#expertise">Services</a>
-            <a href="#growth">SMM Market</a>
-            <a href="#work">Portfolio</a>
+            <a href="#services">Expertise</a>
+            <a href="#market">SMM Market</a>
+            <a href="https://discord.gg/CKcbtqyEDs">Orders</a>
         </div>
         <a href="https://discord.gg/CKcbtqyEDs" class="discord-btn">
-            <i class="fab fa-discord"></i> JOIN SERVER
+            <i class="fab fa-discord"></i> DISCORD
         </a>
     </nav>
 
     <header class="hero">
         <h1>CREATIVITY <br> <span>BEYOND LIMITS</span></h1>
-        <p>Industrial grade 3D Art, VFX, and Premium Social Media Growth Strategies tailored for the elite.</p>
-        <a href="https://discord.gg/CKcbtqyEDs" class="btn-main">Get Started</a>
+        <p>Your elite destination for Industrial 3D, VFX, and Social Media Dominance.</p>
+        <a href="https://discord.gg/CKcbtqyEDs" class="btn-glow">Order Now</a>
     </header>
 
-    <div class="section-header" id="expertise">
+    <div class="section-title" id="services">
         <h2>OUR <span>EXPERTISE</span></h2>
     </div>
 
-    <section class="services-grid">
-        <div class="service-card">
-            <i class="fas fa-cube"></i>
+    <div class="services-container">
+        <div class="s-card">
+            <i class="fas fa-vr-cardboard"></i>
             <h3>3D & VFX</h3>
-            <p>High-end CGI and visual storytelling for brands.</p>
+            <p>Advanced CGI and visual effects for premium content.</p>
         </div>
-        <div class="service-card">
-            <i class="fas fa-play"></i>
+        <div class="s-card">
+            <i class="fas fa-film"></i>
             <h3>VIDEO EDITING</h3>
-            <p>Retaining viewers with high-pace cinematic edits.</p>
+            <p>Retention-based editing for Reels, YT & Shorts.</p>
         </div>
-        <div class="service-card">
-            <i class="fas fa-layer-group"></i>
-            <h3>DESIGN</h3>
-            <p>High-CTR Thumbnails and Brand Identities.</p>
+        <div class="s-card">
+            <i class="fas fa-pen-nib"></i>
+            <h3>GFX DESIGN</h3>
+            <p>High-CTR Thumbnails and professional branding.</p>
         </div>
-    </section>
+    </div>
 
-    <div class="section-header" id="growth">
-        <h2>GROWTH <span>MARKET</span></h2>
+    <div class="section-title" id="market">
+        <h2>SMM <span>GROWTH</span></h2>
     </div>
 
     <div class="market-flex">
-        <div class="price-box featured">
-            <h3>INSTAGRAM GROWTH</h3><br>
-            <div class="price-item"><span>1K Views</span> <span>₹10</span></div>
-            <div class="price-item"><span>1K Likes</span> <span>₹25</span></div>
-            <div class="price-item"><span>1K Real Followers</span> <span>₹700</span></div>
-            <div class="price-item"><span>1K Comments</span> <span>₹500</span></div>
+        <div class="price-card">
+            <h3 style="color:var(--purple-neon); margin-bottom:20px;">INSTAGRAM</h3>
+            <div class="price-row"><span>1K Real Followers</span> <span>₹700</span></div>
+            <div class="price-row"><span>1K Likes</span> <span>₹25</span></div>
+            <div class="price-row"><span>1K Views</span> <span>₹10</span></div>
+            <div class="price-row"><span>1K Comments</span> <span>₹500</span></div>
         </div>
-        <div class="price-box">
-            <h3>YOUTUBE MARKET</h3><br>
-            <div class="price-item"><span>1K Views</span> <span>₹200</span></div>
-            <div class="price-item"><span>1K Subscribers</span> <span>₹2200</span></div>
-            <div class="price-item"><span>1.1K Comments</span> <span>₹1000</span></div>
+        <div class="price-card premium">
+            <h3 style="color:var(--cyan-neon); margin-bottom:20px;">YOUTUBE</h3>
+            <div class="price-row"><span>1K Subscribers</span> <span>₹2200</span></div>
+            <div class="price-row"><span>1K Views</span> <span>₹200</span></div>
+            <div class="price-row"><span>1.1K Comments</span> <span>₹1000</span></div>
         </div>
     </div>
-
-    <div class="section-header" id="work">
-        <h2>LATEST <span>WORK</span></h2>
-    </div>
-
-    <section class="portfolio">
-        <img src="https://media.discordapp.net/attachments/1430899983971778624/1457615615660396607/IMG-20260104-WA0003.jpg" class="work-img">
-        <img src="https://media.discordapp.net/attachments/1430899983971778624/1430960411284471818/Untitled7.jpg" class="work-img">
-        <img src="https://media.discordapp.net/attachments/1430899983971778624/1430960393911664671/Picsart_25-10-01_19-42-55-382.jpg" class="work-img">
-        <img src="https://media.discordapp.net/attachments/1430899983971778624/1430960242203693056/Picsart_25-10-08_13-24-53-671.jpg" class="work-img">
-        <img src="https://media.discordapp.net/attachments/1430900209491382423/1430903797697482862/LOLU.png" class="work-img">
-        <img src="https://media.discordapp.net/attachments/1430899983971778624/1430960141251121193/IMG_20251020_190801.jpg" class="work-img">
-    </section>
 
     <footer>
-        <div class="logo" style="justify-content: center; margin-bottom: 20px;">
-            <img src="ayx_-removebg-preview.png" alt="AYX Logo">
-            AYX STUDIO
+        <div class="footer-logo">
+            <img src="ayx_-removebg-preview.png" alt="AYX Footer">
+            <h2 style="font-family:'Syncopate'; font-size:1.5rem;">AYX STUDIO</h2>
         </div>
-        <p style="opacity: 0.5;">Elevating content to the next dimension.</p>
-        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.3;">&copy; 2026 AYX Studio. Built for Performance.</p>
+        <p style="color:var(--text-dim); margin: 20px 0;">Elevating digital assets to the next dimension.</p>
+        <p style="font-size:0.8rem; opacity:0.4;">&copy; 2026 AYX Studio | Powered by Excellence</p>
     </footer>
 
 </body>
