@@ -3,336 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYX Studio | Premium Creative & Growth Agency</title>
+    <title>AYX Studio | Elite Creative & SMM Agency</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* --- DESIGN SYSTEM --- */
         :root {
-            --bg-black: #050507;
+            --bg-black: #030305;
             --purple-neon: #bc13fe;
-            --purple-dark: #7000ff;
+            --purple-deep: #7000ff;
             --cyan-neon: #00f2ea;
             --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(188, 19, 254, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.08);
             --text-main: #ffffff;
-            --text-dim: #a0a0a0;
+            --text-dim: #94a3b8;
         }
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
             background-color: var(--bg-black);
             color: var(--text-main);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* --- BACKGROUND ANIMATION --- */
-        .bg-glow {
+        /* --- BACKGROUND EFFECTS --- */
+        .blob {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                radial-gradient(circle at 15% 15%, rgba(188, 19, 254, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(0, 242, 234, 0.1) 0%, transparent 40%);
-            z-index: -1;
-        }
-
-        .grid-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(var(--border) 1px, transparent 1px), 
-                              linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 40px 40px;
-            mask-image: radial-gradient(ellipse at center, black, transparent 90%);
-            opacity: 0.1;
-            z-index: -1;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(188, 19, 254, 0.15) 0%, transparent 70%);
+            z-index: -1; filter: blur(80px);
         }
 
         /* --- NAVIGATION --- */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            background: rgba(5, 5, 7, 0.85);
-            backdrop-filter: blur(15px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 8%; background: rgba(3, 3, 5, 0.8);
+            backdrop-filter: blur(20px); position: fixed; width: 100%; top: 0; z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Syncopate', sans-serif;
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
+            font-family: 'Syncopate', sans-serif; font-size: 1.4rem;
+            display: flex; align-items: center; gap: 10px;
         }
 
-        .logo img {
-            height: 45px;
-            filter: drop-shadow(0 0 10px var(--purple-neon));
+        .logo img { height: 40px; }
+
+        .discord-nav {
+            background: white; color: black; padding: 10px 20px;
+            border-radius: 50px; text-decoration: none; font-weight: 800;
+            font-size: 0.8rem; transition: 0.3s;
+            border: 1px solid transparent;
         }
 
-        .nav-links a {
-            color: var(--text-main);
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--purple-neon);
-            text-shadow: 0 0 10px var(--purple-neon);
-        }
-
-        .discord-btn {
-            background: linear-gradient(45deg, var(--purple-dark), #5865F2);
-            color: white;
-            padding: 10px 24px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .discord-btn:hover {
-            transform: translateY(-2px);
+        .discord-nav:hover {
+            background: transparent; color: white; border-color: var(--purple-neon);
             box-shadow: 0 0 20px var(--purple-neon);
         }
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            background: radial-gradient(circle at center, transparent, var(--bg-black)),
-                        url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974&auto=format&fit=crop') no-repeat center/cover;
-            background-blend-mode: multiply;
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop') center/cover;
+            background-blend-mode: overlay; background-color: rgba(0,0,0,0.7);
         }
 
         .hero h1 {
-            font-family: 'Syncopate', sans-serif;
-            font-size: clamp(2rem, 8vw, 4.5rem);
-            line-height: 1.1;
-            margin-bottom: 20px;
+            font-family: 'Syncopate', sans-serif; font-size: clamp(2.5rem, 10vw, 5rem);
+            line-height: 1; margin-bottom: 20px;
         }
 
-        .hero h1 span {
-            color: var(--purple-neon);
-            text-shadow: 0 0 30px var(--purple-neon);
+        .hero span {
+            background: linear-gradient(90deg, var(--purple-neon), var(--cyan-neon));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-dim);
-            max-width: 650px;
-            margin-bottom: 40px;
+        .cta-box {
+            margin-top: 30px; display: flex; gap: 20px;
         }
 
-        .btn-glow {
-            padding: 18px 40px;
-            background: transparent;
-            color: white;
-            border: 2px solid var(--purple-neon);
-            font-weight: 800;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        .btn-main {
+            padding: 15px 35px; border-radius: 4px; text-decoration: none;
+            font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
             transition: 0.4s;
         }
 
-        .btn-glow:hover {
-            background: var(--purple-neon);
-            color: black;
-            box-shadow: 0 0 50px var(--purple-neon);
+        .primary { background: var(--purple-neon); color: white; }
+        .secondary { border: 1px solid var(--glass-border); color: white; backdrop-filter: blur(10px); }
+
+        .primary:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(188, 19, 254, 0.4); }
+
+        /* --- SERVICES GLASS CARDS --- */
+        .section-header { text-align: center; padding: 100px 0 50px; }
+        .section-header h2 { font-family: 'Syncopate'; font-size: 2rem; color: var(--purple-neon); }
+
+        .grid-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; padding: 0 8%;
         }
 
-        /* --- SERVICES --- */
-        .section-title {
-            text-align: center;
-            margin: 100px 0 60px;
-            font-family: 'Syncopate', sans-serif;
-        }
-
-        .services-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            padding: 0 8%;
-        }
-
-        .s-card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            padding: 50px 30px;
-            border-radius: 4px;
-            transition: 0.4s;
-            text-align: center;
+        .glass-card {
+            background: var(--glass); border: 1px solid var(--glass-border);
+            padding: 40px; border-radius: 15px; transition: 0.4s;
             backdrop-filter: blur(10px);
         }
 
-        .s-card:hover {
-            border-color: var(--purple-neon);
-            background: rgba(188, 19, 254, 0.05);
-            transform: translateY(-10px);
+        .glass-card:hover {
+            border-color: var(--purple-neon); background: rgba(188, 19, 254, 0.05);
+            transform: scale(1.02);
         }
 
-        .s-card i {
-            font-size: 3rem;
-            color: var(--purple-neon);
-            margin-bottom: 25px;
-            text-shadow: 0 0 15px var(--purple-neon);
+        .glass-card i { font-size: 2.5rem; color: var(--cyan-neon); margin-bottom: 20px; }
+
+        /* --- PRICING TABLES --- */
+        .price-wrapper {
+            background: rgba(255,255,255,0.02); border-radius: 20px;
+            padding: 30px; border: 1px solid var(--glass-border);
         }
 
-        /* --- MARKET TABLE --- */
-        .market-flex {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            padding: 0 8%;
-            justify-content: center;
-        }
-
-        .price-card {
-            background: #0d0d0f;
-            border: 1px solid var(--border);
-            padding: 40px;
-            flex: 1;
-            min-width: 320px;
-            max-width: 500px;
-        }
-
-        .price-card.premium { border: 1px solid var(--cyan-neon); }
-
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
+        .price-item {
+            display: flex; justify-content: space-between; padding: 12px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .price-row span:last-child {
-            color: var(--cyan-neon);
-            font-weight: 900;
+        .price-item b { color: var(--cyan-neon); }
+
+        .buy-dc {
+            display: block; width: 100%; text-align: center;
+            background: #5865F2; color: white; padding: 15px;
+            margin-top: 25px; border-radius: 8px; text-decoration: none;
+            font-weight: 800; transition: 0.3s;
         }
+
+        .buy-dc:hover { opacity: 0.8; transform: translateY(-3px); }
 
         /* --- FOOTER --- */
         footer {
-            margin-top: 100px;
-            padding: 80px 5% 40px;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            background: #020203;
+            margin-top: 100px; padding: 60px 8%;
+            border-top: 1px solid var(--glass-border); text-align: center;
         }
 
-        .footer-logo img { height: 50px; margin-bottom: 20px; }
-
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2.5rem; }
+            .cta-box { flex-direction: column; }
+            nav .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow"></div>
-    <div class="grid-overlay"></div>
+    <div class="blob" style="top: 10%; left: -10%;"></div>
+    <div class="blob" style="bottom: 10%; right: -10%; background: radial-gradient(circle, rgba(0, 242, 234, 0.1) 0%, transparent 70%);"></div>
 
     <nav>
         <div class="logo">
-            <img src="ayx_-removebg-preview.png" alt="AYX Logo">
-            AYX STUDIO
+            <img src="ayx_-removebg-preview.png" alt="Logo">
+            AYX
         </div>
-        <div class="nav-links">
-            <a href="#services">Expertise</a>
-            <a href="#market">SMM Market</a>
-            <a href="https://discord.gg/CKcbtqyEDs">Orders</a>
-        </div>
-        <a href="https://discord.gg/CKcbtqyEDs" class="discord-btn">
-            <i class="fab fa-discord"></i> DISCORD
+        <a href="https://discord.gg/CKcbtqyEDs" class="discord-nav">
+            <i class="fab fa-discord"></i> JOIN DISCORD
         </a>
     </nav>
 
-    <header class="hero">
-        <h1>CREATIVITY <br> <span>BEYOND LIMITS</span></h1>
-        <p>Your elite destination for Industrial 3D, VFX, and Social Media Dominance.</p>
-        <a href="https://discord.gg/CKcbtqyEDs" class="btn-glow">Order Now</a>
-    </header>
+    <section class="hero">
+        <h1 data-aos="zoom-in">DESIGNING THE <br><span>FUTURE.</span></h1>
+        <p data-aos="fade-up" data-aos-delay="200" style="max-width: 600px; color: var(--text-dim);">
+            Premium Industrial 3D, High-Retention VFX, and Social Media Growth Strategies for the top 1%.
+        </p>
+        <div class="cta-box" data-aos="fade-up" data-aos-delay="400">
+            <a href="https://discord.gg/CKcbtqyEDs" class="btn-main primary">Order Now</a>
+            <a href="#services" class="btn-main secondary">View Services</a>
+        </div>
+    </section>
 
-    <div class="section-title" id="services">
-        <h2>OUR <span>EXPERTISE</span></h2>
+    <div class="section-header" id="services">
+        <h2 data-aos="fade-right">OUR EXPERTISE</h2>
     </div>
 
-    <div class="services-container">
-        <div class="s-card">
-            <i class="fas fa-vr-cardboard"></i>
-            <h3>3D & VFX</h3>
-            <p>Advanced CGI and visual effects for premium content.</p>
+    <div class="grid-container">
+        <div class="glass-card" data-aos="fade-up">
+            <i class="fas fa-cube"></i>
+            <h3>Industrial 3D</h3>
+            <p style="color:var(--text-dim); margin-top:10px;">High-end product renders and industrial animations that sell.</p>
         </div>
-        <div class="s-card">
-            <i class="fas fa-film"></i>
-            <h3>VIDEO EDITING</h3>
-            <p>Retention-based editing for Reels, YT & Shorts.</p>
+        <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-bolt"></i>
+            <h3>VFX & Motion</h3>
+            <p style="color:var(--text-dim); margin-top:10px;">Mind-bending visual effects for commercials and social media.</p>
         </div>
-        <div class="s-card">
-            <i class="fas fa-pen-nib"></i>
-            <h3>GFX DESIGN</h3>
-            <p>High-CTR Thumbnails and professional branding.</p>
+        <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-chart-line"></i>
+            <h3>Growth Hacking</h3>
+            <p style="color:var(--text-dim); margin-top:10px;">Strategic SMM growth to dominate your niche overnight.</p>
         </div>
     </div>
 
-    <div class="section-title" id="market">
-        <h2>SMM <span>GROWTH</span></h2>
+    <div class="section-header" id="market">
+        <h2 data-aos="fade-left">SMM MARKET</h2>
     </div>
 
-    <div class="market-flex">
-        <div class="price-card">
-            <h3 style="color:var(--purple-neon); margin-bottom:20px;">INSTAGRAM</h3>
-            <div class="price-row"><span>1K Real Followers</span> <span>₹700</span></div>
-            <div class="price-row"><span>1K Likes</span> <span>₹25</span></div>
-            <div class="price-row"><span>1K Views</span> <span>₹10</span></div>
-            <div class="price-row"><span>1K Comments</span> <span>₹500</span></div>
+    <div class="grid-container">
+        <div class="price-wrapper" data-aos="flip-left">
+            <h3 style="margin-bottom: 20px;"><i class="fab fa-instagram"></i> Instagram</h3>
+            <div class="price-item"><span>1K Real Followers</span> <b>₹700</b></div>
+            <div class="price-item"><span>1K Real Likes</span> <b>₹25</b></div>
+            <div class="price-item"><span>1K Story Views</span> <b>₹10</b></div>
+            <a href="https://discord.gg/CKcbtqyEDs" class="buy-dc">BUY ON DISCORD</a>
         </div>
-        <div class="price-card premium">
-            <h3 style="color:var(--cyan-neon); margin-bottom:20px;">YOUTUBE</h3>
-            <div class="price-row"><span>1K Subscribers</span> <span>₹2200</span></div>
-            <div class="price-row"><span>1K Views</span> <span>₹200</span></div>
-            <div class="price-row"><span>1.1K Comments</span> <span>₹1000</span></div>
+        <div class="price-wrapper" data-aos="flip-right" style="border-color: var(--cyan-neon);">
+            <h3 style="margin-bottom: 20px;"><i class="fab fa-youtube"></i> YouTube</h3>
+            <div class="price-item"><span>1K Subscribers</span> <b>₹2200</b></div>
+            <div class="price-item"><span>1K Views (High Ret)</span> <b>₹200</b></div>
+            <div class="price-item"><span>Monetization Pack</span> <b>Contact</b></div>
+            <a href="https://discord.gg/CKcbtqyEDs" class="buy-dc" style="background: var(--cyan-neon); color: black;">BUY ON DISCORD</a>
         </div>
     </div>
 
     <footer>
-        <div class="footer-logo">
-            <img src="ayx_-removebg-preview.png" alt="AYX Footer">
-            <h2 style="font-family:'Syncopate'; font-size:1.5rem;">AYX STUDIO</h2>
+        <h2 style="font-family:'Syncopate'; margin-bottom: 10px;">AYX STUDIO</h2>
+        <p style="color:var(--text-dim);">&copy; 2026 AYX Studio. All Rights Reserved.</p>
+        <div style="margin-top: 20px; font-size: 1.5rem; display: flex; justify-content: center; gap: 20px;">
+            <a href="#" style="color:white;"><i class="fab fa-instagram"></i></a>
+            <a href="https://discord.gg/CKcbtqyEDs" style="color:white;"><i class="fab fa-discord"></i></a>
         </div>
-        <p style="color:var(--text-dim); margin: 20px 0;">Elevating digital assets to the next dimension.</p>
-        <p style="font-size:0.8rem; opacity:0.4;">&copy; 2026 AYX Studio | Powered by Excellence</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
 </body>
 </html>
